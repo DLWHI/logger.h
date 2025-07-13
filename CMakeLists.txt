@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(HEADERS
-  include/logh/logger.h
+  include/logger/logger.h
 )
 
 # set(TEST_SOURCES
