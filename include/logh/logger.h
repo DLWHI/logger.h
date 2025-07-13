@@ -1,5 +1,5 @@
-#ifndef LOGGER_H_LOGGER_H_
-#define LOGGER_H_LOGGER_H_
+#ifndef LOGGER_H_LOGH_LOGGER_H_
+#define LOGGER_H_LOGH_LOGGER_H_
 
 #include <chrono>
 #include <ctime>
@@ -45,4 +45,4 @@ namespace logh {
   }
 }
 
-#endif  // LOGGER_H_LOGGER_H
+#endif  // LOGGER_H_LOGH_LOGGER_H
