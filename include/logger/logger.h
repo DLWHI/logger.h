@@ -9,7 +9,8 @@
 
 class logger {
  private:
-  static constexpr time_buf_size_ = 25;
+  static constexpr char time_buf_size_ = 25;
+
   static std::ostream*& log_stream() noexcept {
     static std::ostream* lgs = &std::cout;
     return lgs;
@@ -23,7 +24,7 @@ class logger {
  public:
   static std::ostream& message() {
     std::time_t timestamp = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    std::strftime(time_buf(), time_buf_size_), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));  
+    std::strftime(time_buf(), time_buf_size_, "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));  
     *log_stream() << time_buf() << "MESSAGE" << '|';
     return *log_stream();
   }
