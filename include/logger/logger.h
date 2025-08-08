@@ -14,9 +14,9 @@ class logger {
     return lgs;
   }
   
-  static char time_buf()[25] neoxcept {
-    static char time_buf[25] = {0};
-    return time_buf;
+  static char time_buf()[25] noexcept {
+    static char buf[25] = {0};
+    return buf;
   }
  
  public:
