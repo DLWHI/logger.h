@@ -9,8 +9,8 @@
 
 class logger {
  private:
-  static std::ostream* log_stream = &std::cout;
-  static char time_buf[25] = {0};
+  static std::ostream* log_stream;
+  static char time_buf[25];
  
  public:
   static std::ostream& message() {
@@ -36,6 +36,9 @@ class logger {
 
   static void set_log_stream(std::ostream& stream) { log_stream = &stream; }
 }
+
+std::ostream* logger::log_stream = &std::cout;
+char logger::time_buf[25] = {0};
 
 #endif  // LOGGER_H_LOGGER_LOGGER_H_
 
