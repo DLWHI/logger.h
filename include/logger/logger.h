@@ -21,21 +21,21 @@ class logger {
     std::time_t timestamp = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::strftime(time_buf, sizeof(time_buf), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));  
     *log_stream() << time_buf << "MESSAGE" << '|';
-    return *log_stream;
+    return *log_stream();
   }
 
   static std::ostream& warning() {
     std::time_t timestamp = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::strftime(time_buf, sizeof(time_buf), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp)); 
     *log_stream() << time_buf << "WARNING" << '|';
-    return *log_stream;
+    return *log_stream();
   }
 
   static std::ostream& error() {
    std::time_t timestamp = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::strftime(time_buf, sizeof(time_buf), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));
     *log_stream() << time_buf << "ERROR" << '|';
-    return *log_stream;
+    return *log_stream();
   }
 
   static void set_log_stream(std::ostream& stream) { log_stream() = &stream; }
