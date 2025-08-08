@@ -14,27 +14,30 @@ class logger {
     return lgs;
   }
   
-  static constexpr char time_buf[25] = {0};
+  static char time_buf()[25] neoxcept {
+    static char time_buf[25] = {0};
+    return time_buf;
+  }
  
  public:
   static std::ostream& message() {
     std::time_t timestamp = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    std::strftime(time_buf, sizeof(time_buf), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));  
-    *log_stream() << time_buf << "MESSAGE" << '|';
+    std::strftime(time_buf(), sizeof(time_buf()), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));  
+    *log_stream() << time_buf() << "MESSAGE" << '|';
     return *log_stream();
   }
 
   static std::ostream& warning() {
     std::time_t timestamp = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    std::strftime(time_buf, sizeof(time_buf), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp)); 
-    *log_stream() << time_buf << "WARNING" << '|';
+    std::strftime(time_buf(), sizeof(time_buf()), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp)); 
+    *log_stream() << time_buf() << "WARNING" << '|';
     return *log_stream();
   }
 
   static std::ostream& error() {
    std::time_t timestamp = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
-    std::strftime(time_buf, sizeof(time_buf), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));
-    *log_stream() << time_buf << "ERROR" << '|';
+    std::strftime(time_buf(), sizeof(time_buf()), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));
+    *log_stream() << time_buf() << "ERROR" << '|';
     return *log_stream();
   }
 
