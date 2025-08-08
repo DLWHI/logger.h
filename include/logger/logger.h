@@ -35,7 +35,7 @@ class logger {
   }
 
   static void set_log_stream(std::ostream& stream) { log_stream = &stream; }
-}
+};
 
 std::ostream* logger::log_stream = &std::cout;
 char logger::time_buf[25] = {0};
