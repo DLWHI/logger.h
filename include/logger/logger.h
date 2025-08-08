@@ -1,5 +1,5 @@
-#ifndef LOGGER_H_LOGH_LOGGER_H_
-#define LOGGER_H_LOGH_LOGGER_H_
+#ifndef LOGGER_H_LOGGER_LOGGER_H_
+#define LOGGER_H_LOGGER_LOGGER_H_
 
 #include <chrono>
 #include <ctime>
@@ -7,10 +7,12 @@
 #include <string>
 #include <string_view>
 
-namespace logger {
-  static std::ostream& log_stream = std::cout;
-  static char time_buf[80] = {0};
-
+class logger {
+ private:
+  static std::ostream* log_stream = &std::cout;
+  static char time_buf[25] = {0};
+ 
+ public:
   static std::ostream& message() {
     std::time_t timestamp = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     std::strftime(time_buf, sizeof(time_buf), "[%a %b %d %Y %H:%M:%S]", std::localtime(&timestamp));  
@@ -31,6 +33,9 @@ namespace logger {
     log_stream << time_buf << "ERROR" << '|';
     return log_stream;
   }
+
+  static void set_log_stream(std::ostream& stream) { log_stream = &stream; }
 }
 
-#endif  // LOGGER_H_LOGH_LOGGER_H
+#endif  // LOGGER_H_LOGGER_LOGGER_H_
+
