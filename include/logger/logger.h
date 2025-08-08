@@ -14,7 +14,7 @@ class logger {
     return lgs;
   }
   
-  static char time_buf[25];
+  static constexpr char time_buf[25] = {0};
  
  public:
   static std::ostream& message() {
