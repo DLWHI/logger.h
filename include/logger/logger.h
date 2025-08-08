@@ -9,8 +9,8 @@
 
 class logger {
  private:
-  static std::ostream* log_stream;
-  static char time_buf[25];
+  inline static std::ostream* log_stream;
+  inline static char time_buf[25];
  
  public:
   static std::ostream& message() {
